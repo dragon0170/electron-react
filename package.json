@@ -15,11 +15,29 @@
     "react-scripts": "3.3.0",
     "typescript": "~3.7.2"
   },
+  "homepage": "./",
+  "main": "src/electron-starter.js",
   "scripts": {
-    "start": "react-scripts start",
+    "react-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "start": "nf start",
+    "dist": "yarn build && electron-builder --mac",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "extends": null,
+    "files": [
+      "build/**/*",
+      "src/electron-starter.js"
+    ],
+    "appId": "com.paust.popconn",
+    "productName": "Popconn",
+    "mac": {
+      "category": "public.app-category.productivity"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +53,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^7.1.4",
+    "electron-builder": "^21.2.0",
+    "foreman": "^3.0.1"
   }
 }
